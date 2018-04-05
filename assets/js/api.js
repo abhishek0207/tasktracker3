@@ -40,15 +40,12 @@ submit_task(data, history) {
       contentType: "application/json; charset=UTF-8",
       data: JSON.stringify({ task: data, token: data.token }),
       success: (resp) => {
+        console.log("response is") 
+        console.log(resp)
         store.dispatch({
           type: 'ADD_TASK',
           task: resp.data,
         });
-        store.dispatch({
-          type: 'CLEAR_FORM',
-          user: resp.data,
-        });
-        
         history.push('/')
       },
       error: function(xhr, ajaxOptions, thrownError){
